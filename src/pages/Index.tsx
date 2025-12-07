@@ -250,7 +250,10 @@ function Index() {
       <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h1 
+              className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent cursor-pointer transition-all hover:scale-105"
+              onClick={() => setCurrentPage('home')}
+            >
               GEEK.SHOP
             </h1>
             <nav className="flex gap-6 items-center">

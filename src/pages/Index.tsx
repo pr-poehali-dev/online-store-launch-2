@@ -365,11 +365,68 @@ function Index() {
         handleSocialAuth={handleSocialAuth}
       />
 
-      <footer className="border-t border-border mt-16">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center text-muted-foreground">
-            <p className="mb-2">© 2024 GEEK.SHOP — Девайсы для настоящих гиков</p>
-            <p className="text-sm">Email-уведомления о новинках, скидках и статусе заказа включены по умолчанию</p>
+      <footer className="border-t border-border mt-16 bg-muted/30">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="text-lg font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                GEEK.SHOP
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                For gamers. By gamers.<br />
+                Лучшие девайсы и игры для настоящих геймеров.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Юридическая информация</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">Публичная оферта</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">Политика конфиденциальности</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">Обработка персональных данных</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Покупателям</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">Условия оплаты</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">Условия доставки</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">Возврат и обмен</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Компания</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">О нас</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">Контакты</a>
+                </li>
+                <li className="pt-2">
+                  <p className="text-xs">Email: support@geekshop.ru</p>
+                  <p className="text-xs">Тел: +7 (999) 123-45-67</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-border pt-6 text-center text-sm text-muted-foreground">
+            <p>© 2024 GEEK.SHOP — Все права защищены</p>
           </div>
         </div>
       </footer>

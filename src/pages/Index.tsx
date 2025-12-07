@@ -146,7 +146,7 @@ function Index() {
     {
       id: 'TRK-12345678',
       date: '2024-11-15',
-      total: 45997,
+      total: products[0].price + products[3].price,
       status: 'Доставлен',
       items: [
         { ...products[0], quantity: 1 },

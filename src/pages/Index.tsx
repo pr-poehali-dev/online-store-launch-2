@@ -56,7 +56,7 @@ const products: Product[] = [
     price: 12999,
     category: 'Периферия',
     description: 'Механическая клавиатура с RGB подсветкой и программируемыми макросами',
-    image: '/placeholder.svg',
+    image: 'https://cdn.poehali.dev/files/20201021224132-7247940-3.jpg',
     rating: 5
   },
   {
@@ -65,7 +65,7 @@ const products: Product[] = [
     price: 8999,
     category: 'Периферия',
     description: 'Игровая мышь с 16000 DPI и настраиваемыми кнопками',
-    image: '/placeholder.svg',
+    image: 'https://cdn.poehali.dev/files/orig (1).jpg',
     rating: 5
   },
   {
@@ -74,7 +74,7 @@ const products: Product[] = [
     price: 15999,
     category: 'Периферия',
     description: 'Наушники с объёмным звуком 7.1 и шумоподавлением',
-    image: '/placeholder.svg',
+    image: 'https://cdn.poehali.dev/files/6022274409.jpg',
     rating: 4
   },
   {
@@ -83,7 +83,7 @@ const products: Product[] = [
     price: 2499,
     category: 'Видеоигры',
     description: 'Ролевая игра с открытым миром в антиутопичном Найт-Сити',
-    image: '/placeholder.svg',
+    image: 'https://cdn.poehali.dev/files/s-l1600.jpg',
     rating: 5
   },
   {
@@ -92,7 +92,7 @@ const products: Product[] = [
     price: 2999,
     category: 'Видеоигры',
     description: 'Эпическая RPG от создателей Dark Souls и Джорджа Мартина',
-    image: '/placeholder.svg',
+    image: 'https://cdn.poehali.dev/files/s-l1600.jpg',
     rating: 5
   },
   {
@@ -101,7 +101,7 @@ const products: Product[] = [
     price: 2199,
     category: 'Видеоигры',
     description: 'Шутер в альтернативной реальности СССР с боевыми роботами',
-    image: '/placeholder.svg',
+    image: 'https://cdn.poehali.dev/files/s-l1600.jpg',
     rating: 4
   }
 ];

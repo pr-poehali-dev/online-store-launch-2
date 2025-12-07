@@ -35,10 +35,10 @@ export function HomePage({
     <div className="space-y-12 animate-fade-in">
       <section className="text-center py-12 space-y-6">
         <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-glow">
-          Девайсы для настоящих гиков
+          For gamers. By gamers
         </h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Топовая периферия, мониторы и аксессуары для работы и игр. Подпишись на рассылку и получай уведомления о новинках и скидках!
+          Топовая периферия для игр и лучшие видеоигры в одном месте. Cyberpunk 2077, Elden Ring, Atomic Heart и эксклюзивные девайсы для настоящих геймеров. Подпишись на рассылку и получай уведомления о новинках и скидках!
         </p>
         <div className="flex gap-3 max-w-md mx-auto mt-8">
           <Input

@@ -31,7 +31,7 @@ interface Review {
   productId: number;
 }
 
-type Page = 'home' | 'cart' | 'checkout' | 'reviews' | 'tracking' | 'profile';
+type Page = 'home' | 'cart' | 'checkout' | 'payment' | 'reviews' | 'tracking' | 'profile';
 
 interface User {
   name: string;
@@ -48,6 +48,7 @@ interface CartAndCheckoutProps {
   updateQuantity: (productId: number, delta: number) => void;
   removeFromCart: (productId: number) => void;
   getTotalPrice: () => number;
+  proceedToPayment: () => void;
   placeOrder: () => void;
   orderPlaced: boolean;
   trackingNumber: string;
@@ -63,6 +64,7 @@ export function CartAndCheckout({
   updateQuantity,
   removeFromCart,
   getTotalPrice,
+  proceedToPayment,
   placeOrder,
   orderPlaced,
   trackingNumber,
@@ -208,21 +210,11 @@ export function CartAndCheckout({
             </div>
           </div>
           <Button
-            onClick={placeOrder}
-            disabled={orderPlaced}
+            onClick={proceedToPayment}
             className="w-full text-lg py-6 transition-all hover:scale-105"
           >
-            {orderPlaced ? (
-              <>
-                <Icon name="CheckCircle" className="mr-2" size={20} />
-                Заказ оформлен!
-              </>
-            ) : (
-              <>
-                <Icon name="CreditCard" className="mr-2" size={20} />
-                Оплатить заказ
-              </>
-            )}
+            <Icon name="ArrowRight" className="mr-2" size={20} />
+            Перейти к оплате
           </Button>
         </Card>
       </div>
@@ -270,6 +262,94 @@ export function CartAndCheckout({
     );
   }
 
+  if (currentPage === 'payment') {
+    return (
+      <div className="max-w-2xl mx-auto space-y-6 animate-fade-in">
+        <h2 className="text-4xl font-bold mb-8">Оплата заказа</h2>
+        
+        <Card className="p-6 mb-6">
+          <div className="space-y-4 mb-6">
+            <div className="flex justify-between text-lg">
+              <span className="text-muted-foreground">Товары ({cart.reduce((sum, item) => sum + item.quantity, 0)} шт):</span>
+              <span className="font-semibold">{getTotalPrice().toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div className="flex justify-between text-lg">
+              <span className="text-muted-foreground">Доставка:</span>
+              <span className="font-semibold text-secondary">Бесплатно</span>
+            </div>
+            <Separator />
+            <div className="flex justify-between text-2xl font-bold">
+              <span>К оплате:</span>
+              <span className="text-primary">{getTotalPrice().toLocaleString('ru-RU')} ₽</span>
+            </div>
+          </div>
+        </Card>
+
+        <h3 className="text-2xl font-bold mb-4">Выберите способ оплаты</h3>
+
+        <div className="space-y-4">
+          <Card className="cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg hover:border-primary">
+            <CardContent className="p-6" onClick={placeOrder}>
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="CreditCard" size={28} className="text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold mb-1">Банковская карта</h4>
+                  <p className="text-sm text-muted-foreground">Visa, Mastercard, МИР</p>
+                </div>
+                <Icon name="ChevronRight" size={24} className="text-muted-foreground" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg hover:border-primary">
+            <CardContent className="p-6" onClick={placeOrder}>
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-7 h-7 text-secondary" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold mb-1">СБП</h4>
+                  <p className="text-sm text-muted-foreground">Система быстрых платежей</p>
+                </div>
+                <Icon name="ChevronRight" size={24} className="text-muted-foreground" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg hover:border-primary">
+            <CardContent className="p-6" onClick={placeOrder}>
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-7 h-7 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/>
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold mb-1">СберПэй</h4>
+                  <p className="text-sm text-muted-foreground">Оплата через Сбербанк Онлайн</p>
+                </div>
+                <Icon name="ChevronRight" size={24} className="text-muted-foreground" />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <Button
+          variant="outline"
+          onClick={() => setCurrentPage('checkout')}
+          className="w-full mt-6"
+        >
+          <Icon name="ArrowLeft" className="mr-2" size={18} />
+          Вернуться к оформлению
+        </Button>
+      </div>
+    );
+  }
+
   if (currentPage === 'tracking') {
     return (
       <div className="max-w-2xl mx-auto space-y-6 animate-fade-in">
@@ -281,7 +361,7 @@ export function CartAndCheckout({
                 <Icon name="Package" size={24} />
                 Заказ #{trackingNumber}
               </CardTitle>
-              <CardDescription>Ваш заказ успешно оформлен</CardDescription>
+              <CardDescription>Ваш заказ успешно оформлен и оплачен</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-4">

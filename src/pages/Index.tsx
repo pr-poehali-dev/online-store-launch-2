@@ -31,7 +31,7 @@ interface Review {
   productId: number;
 }
 
-type Page = 'home' | 'cart' | 'checkout' | 'reviews' | 'tracking' | 'profile';
+type Page = 'home' | 'cart' | 'checkout' | 'payment' | 'reviews' | 'tracking' | 'profile';
 
 interface User {
   name: string;
@@ -186,6 +186,10 @@ function Index() {
     return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   };
 
+  const proceedToPayment = () => {
+    setCurrentPage('payment');
+  };
+
   const placeOrder = () => {
     if (cart.length > 0) {
       const newTrackingNumber = `TRK-${Date.now().toString().slice(-8)}`;
@@ -323,7 +327,7 @@ function Index() {
           />
         )}
 
-        {(currentPage === 'cart' || currentPage === 'checkout' || currentPage === 'reviews' || currentPage === 'tracking') && (
+        {(currentPage === 'cart' || currentPage === 'checkout' || currentPage === 'payment' || currentPage === 'reviews' || currentPage === 'tracking') && (
           <CartAndCheckout
             currentPage={currentPage}
             cart={cart}
@@ -331,6 +335,7 @@ function Index() {
             updateQuantity={updateQuantity}
             removeFromCart={removeFromCart}
             getTotalPrice={getTotalPrice}
+            proceedToPayment={proceedToPayment}
             placeOrder={placeOrder}
             orderPlaced={orderPlaced}
             trackingNumber={trackingNumber}

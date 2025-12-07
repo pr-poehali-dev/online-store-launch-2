@@ -33,6 +33,12 @@ interface Review {
 
 type Page = 'home' | 'cart' | 'checkout' | 'reviews' | 'tracking' | 'profile';
 
+interface User {
+  name: string;
+  email: string;
+  avatar?: string;
+}
+
 interface CartAndCheckoutProps {
   currentPage: Page;
   cart: CartItem[];
@@ -45,6 +51,7 @@ interface CartAndCheckoutProps {
   trackingNumber: string;
   reviews: Review[];
   products: Product[];
+  user: User | null;
 }
 
 export function CartAndCheckout({
@@ -58,7 +65,8 @@ export function CartAndCheckout({
   orderPlaced,
   trackingNumber,
   reviews,
-  products
+  products,
+  user
 }: CartAndCheckoutProps) {
   if (currentPage === 'cart') {
     return (
@@ -152,11 +160,11 @@ export function CartAndCheckout({
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Имя</Label>
-              <Input id="name" placeholder="Иван Иванов" />
+              <Input id="name" placeholder="Иван Иванов" defaultValue={user?.name || ''} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="ivan@example.com" />
+              <Input id="email" type="email" placeholder="ivan@example.com" defaultValue={user?.email || ''} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Телефон</Label>

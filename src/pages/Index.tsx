@@ -324,6 +324,7 @@ function Index() {
             trackingNumber={trackingNumber}
             reviews={reviews}
             products={products}
+            user={user}
           />
         )}
 

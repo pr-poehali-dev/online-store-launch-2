@@ -27,6 +27,8 @@ interface User {
   name: string;
   email: string;
   avatar?: string;
+  phone?: string;
+  address?: string;
 }
 
 interface Order {
@@ -42,9 +44,21 @@ interface ProfilePageProps {
   orders: Order[];
   handleLogout: () => void;
   setCurrentPage: (page: string) => void;
+  updateUserProfile: (updates: Partial<User>) => void;
 }
 
-export function ProfilePage({ user, orders, handleLogout, setCurrentPage }: ProfilePageProps) {
+export function ProfilePage({ user, orders, handleLogout, setCurrentPage, updateUserProfile }: ProfilePageProps) {
+  const handleSaveProfile = () => {
+    const name = (document.getElementById('profile-name') as HTMLInputElement)?.value;
+    const email = (document.getElementById('profile-email') as HTMLInputElement)?.value;
+    const phone = (document.getElementById('profile-phone') as HTMLInputElement)?.value;
+    const address = (document.getElementById('profile-address') as HTMLTextAreaElement)?.value;
+    
+    if (name && email) {
+      updateUserProfile({ name, email, phone, address });
+      alert('Данные успешно сохранены!');
+    }
+  };
   return (
     <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
       <div className="flex items-center justify-between mb-8">
@@ -142,7 +156,21 @@ export function ProfilePage({ user, orders, handleLogout, setCurrentPage }: Prof
                 <Label htmlFor="profile-email">Email</Label>
                 <Input id="profile-email" type="email" defaultValue={user.email} />
               </div>
-              <Button className="w-full">
+              <div className="space-y-2">
+                <Label htmlFor="profile-phone">Телефон</Label>
+                <Input id="profile-phone" placeholder="+7 (999) 123-45-67" defaultValue={user.phone || ''} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="profile-address">Адрес доставки</Label>
+                <textarea
+                  id="profile-address"
+                  className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Город, улица, дом, квартира"
+                  rows={3}
+                  defaultValue={user.address || ''}
+                />
+              </div>
+              <Button onClick={handleSaveProfile} className="w-full">
                 <Icon name="Save" className="mr-2" size={18} />
                 Сохранить изменения
               </Button>

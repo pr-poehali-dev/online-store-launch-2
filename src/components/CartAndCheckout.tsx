@@ -37,6 +37,8 @@ interface User {
   name: string;
   email: string;
   avatar?: string;
+  phone?: string;
+  address?: string;
 }
 
 interface CartAndCheckoutProps {
@@ -168,12 +170,12 @@ export function CartAndCheckout({
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Телефон</Label>
-              <Input id="phone" placeholder="+7 (999) 123-45-67" />
+              <Input id="phone" placeholder="+7 (999) 123-45-67" defaultValue={user?.phone || ''} />
             </div>
             <Separator className="my-6" />
             <div className="space-y-2">
               <Label htmlFor="address">Адрес доставки</Label>
-              <Textarea id="address" placeholder="Город, улица, дом, квартира" rows={3} />
+              <Textarea id="address" placeholder="Город, улица, дом, квартира" rows={3} defaultValue={user?.address || ''} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="comment">Комментарий к заказу</Label>

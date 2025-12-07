@@ -37,6 +37,8 @@ interface User {
   name: string;
   email: string;
   avatar?: string;
+  phone?: string;
+  address?: string;
 }
 
 interface Order {
@@ -207,7 +209,9 @@ function Index() {
     setUser({
       name: email.split('@')[0],
       email: email,
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`
+      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
+      phone: '',
+      address: ''
     });
     setShowAuthDialog(false);
   };
@@ -216,9 +220,17 @@ function Index() {
     setUser({
       name: `User_${provider}`,
       email: `user@${provider}.ru`,
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${provider}`
+      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${provider}`,
+      phone: '',
+      address: ''
     });
     setShowAuthDialog(false);
+  };
+
+  const updateUserProfile = (updates: Partial<User>) => {
+    if (user) {
+      setUser({ ...user, ...updates });
+    }
   };
 
   const handleLogout = () => {
@@ -334,6 +346,7 @@ function Index() {
             orders={orders}
             handleLogout={handleLogout}
             setCurrentPage={setCurrentPage}
+            updateUserProfile={updateUserProfile}
           />
         )}
       </main>

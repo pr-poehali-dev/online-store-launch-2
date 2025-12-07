@@ -103,6 +103,15 @@ const products: Product[] = [
     description: 'Шутер в альтернативной реальности СССР с боевыми роботами',
     image: 'https://cdn.poehali.dev/files/s-l1600.jpg',
     rating: 4
+  },
+  {
+    id: 10,
+    name: 'Warhammer 40000 Darktide',
+    price: 2749,
+    category: 'Видеоигры',
+    description: 'Кооперативный экшен в мрачной вселенной Warhammer 40K',
+    image: 'https://cdn.poehali.dev/files/spotlight_image_english.jpg',
+    rating: 5
   }
 ];
 

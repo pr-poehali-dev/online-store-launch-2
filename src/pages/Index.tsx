@@ -16,6 +16,8 @@ interface Product {
   description: string;
   image: string;
   rating: number;
+  logo?: string;
+  genre?: string;
 }
 
 interface CartItem extends Product {
@@ -84,6 +86,8 @@ const products: Product[] = [
     category: 'Видеоигры',
     description: 'Ролевая игра с открытым миром в антиутопичном Найт-Сити',
     image: 'https://cdn.poehali.dev/files/s-l1600.jpg',
+    logo: 'https://cdn.poehali.dev/files/5da53eeb915574be5137c06e9a0ca3c5.jpg',
+    genre: 'RPG',
     rating: 5
   },
   {
@@ -93,6 +97,8 @@ const products: Product[] = [
     category: 'Видеоигры',
     description: 'Эпическая RPG от создателей Dark Souls и Джорджа Мартина',
     image: 'https://cdn.poehali.dev/files/s-l1600.jpg',
+    logo: 'https://cdn.poehali.dev/files/i.jpg',
+    genre: 'RPG',
     rating: 5
   },
   {
@@ -102,6 +108,8 @@ const products: Product[] = [
     category: 'Видеоигры',
     description: 'Шутер в альтернативной реальности СССР с боевыми роботами',
     image: 'https://cdn.poehali.dev/files/s-l1600.jpg',
+    logo: 'https://cdn.poehali.dev/files/803734_side.jpg',
+    genre: 'Шутер',
     rating: 4
   },
   {
@@ -111,6 +119,8 @@ const products: Product[] = [
     category: 'Видеоигры',
     description: 'Кооперативный экшен в мрачной вселенной Warhammer 40K',
     image: 'https://cdn.poehali.dev/files/spotlight_image_english.jpg',
+    logo: 'https://cdn.poehali.dev/files/spotlight_image_english.jpg',
+    genre: 'Экшен',
     rating: 5
   }
 ];
